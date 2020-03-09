@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import "./scss/main.scss";
-import Router from "./Components/Router";
+import Router from "./Components/Routes";
 
 const App = (props) => {
 	return (
