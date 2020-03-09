@@ -6,13 +6,7 @@ class Header extends Component {
 		return (
 			<header id="page-header">
 				<div className="container">
-					<div className="header-wrapper">
-						<SFMoviesConsumer>
-							{(val) => {
-								return <h4>{val}</h4>;
-							}}
-						</SFMoviesConsumer>
-					</div>
+					<div className="header-wrapper">HEADER</div>
 				</div>
 			</header>
 		);

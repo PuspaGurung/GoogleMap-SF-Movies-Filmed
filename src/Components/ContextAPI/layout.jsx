@@ -7,7 +7,7 @@ import Footer from "../Header_Footer/Footer";
 
 const Layout = (props) => {
 	return (
-		<SFMoviesProvider value={props.moviesData}>
+		<SFMoviesProvider value={props.moviesData} {...props}>
 			<Header /> {props.children} <Footer />
 		</SFMoviesProvider>
 	);
