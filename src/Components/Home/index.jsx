@@ -7,9 +7,10 @@ class Home extends Component {
 		return (
 			<main id="main">
 				<div className="container">
+					<header className="section-header">
+						<h1 className="heading-primary">Film Locations in San Francisco</h1>
+					</header>
 					<div className="movies-wrapper">
-						<h1>Movie list with filmed address </h1>
-
 						<SFMoviesConsumer>
 							{(movies) => {
 								if (movies) {

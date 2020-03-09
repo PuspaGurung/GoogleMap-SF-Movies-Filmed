@@ -7,17 +7,21 @@ const MovieCard = (props) => {
 		<div className="movie">
 			<h2 className="movie__title heading-secondary">{movieTitle}</h2>
 			<ul className="movie__filmed-address">
-				{filmedAddresses.map((address, i) => {
-					return address !== undefined ? (
-						<li key={i} className="address-list">
-							{address}
-						</li>
-					) : (
-						<li key={i} className="address-list">
-							Address Not specified
-						</li>
-					);
-				})}
+				<details>
+					<summary> Movie Filmed Addresses :</summary>
+
+					{filmedAddresses.map((address, i) => {
+						return address !== undefined ? (
+							<li key={i} className="address-list">
+								{address}
+							</li>
+						) : (
+							<li key={i} className="address-list">
+								Address Not specified
+							</li>
+						);
+					})}
+				</details>
 			</ul>
 		</div>
 	);

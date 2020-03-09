@@ -1,0 +1,79 @@
+#main {
+    .movies-wrapper {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+
+        .movie {
+            border: 1px solid #eee;
+            padding: 2rem;
+            @include transition-delay-sm;
+            @include box-shadow-secondary;
+            width: 19%;
+            margin-bottom: 3rem;
+
+            &__filmed-address {
+                min-height: 4rem;
+                width: 100%;
+                position: relative;
+
+                summary {
+                    position: relative;
+                    z-index: 1;
+                    display: flex;
+                    align-items: center;
+                    @include transition-delay-sm;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                details {
+                    z-index: 100;
+                    background-color: $color-white-tertiary;
+                    padding: 2rem;
+                    top: 0;
+                    left: 0;
+                    border-radius: 0;
+                    -webkit-border-radius: 0;
+                    -moz-border-radius: 0;
+                    -ms-border-radius: 0;
+                    -o-border-radius: 0;
+                    border: 1px solid $color-white-tertiary;
+
+                    &[open] {
+                        z-index: 20000;
+                        position: absolute;
+
+                        summary {
+                            border-bottom: 1px solid $color-blue-primary;
+                            padding-bottom: 1rem;
+                            margin-bottom: 1rem;
+                        }
+                    }
+
+                    &:focus,
+                    &:hover {
+                        outline: none;
+                        cursor: pointer;
+                        border: 1px solid $color-blue-primary;
+                        @include transition-delay-sm;
+
+                    }
+                }
+
+                .address-list {
+                    position: relative;
+                    z-index: 2;
+                    display: inline-block !important;
+                    padding: 0.5rem;
+                    color: $color-black-secondary;
+                    margin: 0.5rem;
+                    border: 1px solid $color-grey-secondary;
+                    background-color: $color-white-primary;
+                }
+            }
+        }
+    }
+}

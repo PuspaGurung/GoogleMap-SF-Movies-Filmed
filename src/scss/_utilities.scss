@@ -11,9 +11,10 @@
 
 //h2
 .heading-secondary {
-	font-size: 3.5rem;
+	font-size: 2rem;
 	font-weight: 700;
-	margin-bottom: 3rem;
+	margin-bottom: 2rem;
+	text-transform: uppercase;
 }
 
 //h3
@@ -21,4 +22,10 @@
 	font-size: 2rem;
 	font-weight: normal;
 	margin-bottom: 2rem;
+}
+
+// Section-header
+.section-header {
+	margin-bottom: 3rem;
+	width: 100%;
 }
