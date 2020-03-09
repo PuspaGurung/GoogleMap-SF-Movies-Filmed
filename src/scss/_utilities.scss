@@ -7,6 +7,21 @@
 // h1
 .heading-primary {
 	font-size: 4rem;
+	text-transform: uppercase;
+	position: relative;
+	padding-bottom: 1rem;
+	margin-bottom: 5rem;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 6rem;
+		height: 3px;
+		background-color: $color-blue-primary;
+		z-index: -1;
+	}
 }
 
 //h2
@@ -15,6 +30,7 @@
 	font-weight: 700;
 	margin-bottom: 2rem;
 	text-transform: uppercase;
+	text-align: center;
 }
 
 //h3

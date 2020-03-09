@@ -1,4 +1,6 @@
 #main {
+    margin-bottom: 6rem;
+
     .movies-wrapper {
         display: flex;
         flex-flow: row wrap;
@@ -24,8 +26,10 @@
                     align-items: center;
                     @include transition-delay-sm;
 
-                    &:focus {
+                    &:focus,
+                    &:hover {
                         outline: none;
+                        color: $color-blue-primary;
                     }
                 }
 
@@ -50,6 +54,7 @@
                             border-bottom: 1px solid $color-blue-primary;
                             padding-bottom: 1rem;
                             margin-bottom: 1rem;
+                            color: $color-blue-primary;
                         }
                     }
 

@@ -5,7 +5,7 @@ class Footer extends Component {
 		return (
 			<footer id="page-footer">
 				<div className="container">
-					<div className="footer-wrapper">Footer</div>
+					<div className="footer-wrapper">Site Footer</div>
 				</div>
 			</footer>
 		);
