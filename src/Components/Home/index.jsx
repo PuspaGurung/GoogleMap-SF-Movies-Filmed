@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { SFMoviesConsumer } from "../ContextAPI/Context";
+
+import FilterNav from "./FilterNav";
 import MovieCard from "./../MovieCard";
 
 class Home extends Component {
@@ -10,6 +12,7 @@ class Home extends Component {
 					<header className="section-header">
 						<h1 className="heading-primary">Film Locations in San Francisco</h1>
 					</header>
+					<FilterNav />
 					<div className="movies-wrapper">
 						<SFMoviesConsumer>
 							{(movies) => {
@@ -20,6 +23,7 @@ class Home extends Component {
 												key={i}
 												movieTitle={movie.movieTitle}
 												filmedAddresses={movie.filmedAddresses}
+												releaseYear={movie.releaseYear}
 											/>
 										);
 									});

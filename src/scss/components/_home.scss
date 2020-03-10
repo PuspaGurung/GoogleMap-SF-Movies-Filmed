@@ -1,6 +1,34 @@
 #main {
     margin-bottom: 6rem;
 
+    .movie-filter {
+        form {
+            width: 100%;
+            display: block;
+            margin-bottom: 4rem;
+
+            label {
+                display: block;
+                margin-bottom: 1rem;
+                text-transform: uppercase;
+            }
+
+            input[type="text"] {
+                width: 100%;
+                height: 4rem;
+                padding: 0.8rem 2rem;
+                outline: none;
+                border: 1px solid #ccc;
+
+                @include transition-delay-sm;
+
+                &:focus {
+                    border-bottom: 1px solid $color-blue-primary;
+                }
+            }
+        }
+    }
+
     .movies-wrapper {
         display: flex;
         flex-flow: row wrap;
@@ -14,6 +42,20 @@
             width: 19%;
             margin-bottom: 3rem;
 
+            &__info-tag {
+                background-color: $color-black-secondary;
+                font-size: 1.3rem;
+                padding: 0.3rem 1rem;
+                color: $color-white-primary;
+            }
+
+            &__title {
+                text-align: left;
+                padding: 1rem;
+                border: 1px solid $color-grey-primary;
+                color: $color-black-secondary;
+            }
+
             &__filmed-address {
                 min-height: 4rem;
                 width: 100%;
@@ -24,6 +66,7 @@
                     z-index: 1;
                     display: flex;
                     align-items: center;
+                    text-transform: uppercase;
                     @include transition-delay-sm;
 
                     &:focus,
@@ -49,12 +92,14 @@
                     &[open] {
                         z-index: 20000;
                         position: absolute;
+                        border: 1px solid $color-grey-primary;
 
                         summary {
                             border-bottom: 1px solid $color-blue-primary;
                             padding-bottom: 1rem;
                             margin-bottom: 1rem;
                             color: $color-blue-primary;
+
                         }
                     }
 
@@ -62,7 +107,7 @@
                     &:hover {
                         outline: none;
                         cursor: pointer;
-                        border: 1px solid $color-blue-primary;
+                        border: 1px solid $color-grey-primary;
                         @include transition-delay-sm;
 
                     }
@@ -71,12 +116,19 @@
                 .address-list {
                     position: relative;
                     z-index: 2;
-                    display: inline-block !important;
-                    padding: 0.5rem;
+                    padding: 0.8rem;
                     color: $color-black-secondary;
                     margin: 0.5rem;
                     border: 1px solid $color-grey-secondary;
                     background-color: $color-white-primary;
+
+                    display: inline-flex !important;
+
+                    svg {
+                        margin-right: 0.5rem;
+                        font-size: 1.2rem;
+                        color: $color-black-primary;
+                    }
                 }
             }
         }

@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import Axios from "axios";
+
+import Geocode from "react-geocode";
+Geocode.setApiKey("AIzaSyB3mQfjGA2w84n-DWr9hf1B1xLS_EajGjY");
+Geocode.enableDebug();
+
 const HocSFMovies = (RenderComponent) => {
 	return class extends Component {
 		state = {
 			movies: null
 		};
+
 		async componentDidMount() {
 			let ApiUrl = "https://data.sfgov.org/resource/yitu-d5am.json";
 
@@ -23,34 +29,38 @@ const HocSFMovies = (RenderComponent) => {
 				});
 			});
 
-			// Get  movie Title with filmed Address
-			let MovieTitleWithFilmedLocations = [];
+			// Get  movie Title with filmed-Address and filmed-addresses-latitude-longitude
+			let movieTitleWithFilmedLocations = [];
 			for (let i = 0; i < arrMovies.length; i++) {
 				let MovieTitle = arrMovies[i];
-				MovieTitleWithFilmedLocations.push(
+				movieTitleWithFilmedLocations.push(
 					// Get each movie filmed location in terms of movie title
-					getEachMovieFilmedLocationByMovieTitle(MovieTitle)
+					getEachMovieFilmedLocation(MovieTitle)
 				);
 			}
 
-			function getEachMovieFilmedLocationByMovieTitle(title) {
+			function getEachMovieFilmedLocation(title) {
 				let movie = {
 					movieTitle: title,
-					filmedAddresses: []
+					filmedAddresses: [],
+					releaseYear: []
 				};
 				for (let i = 0; i < moviesData.length; i++) {
-					let tempMovieArr = [];
+					let tempAddressesArr = [];
+					let tempReleaseYear = [];
 					if (moviesData[i].title === title) {
-						tempMovieArr.push(moviesData[i].locations);
+						tempAddressesArr.push(moviesData[i].locations);
+						tempReleaseYear.push(moviesData[i].release_year);
 					}
-					movie.filmedAddresses.push(...tempMovieArr);
+					movie.filmedAddresses.push(...tempAddressesArr);
+					movie.releaseYear.push(...tempReleaseYear);
 				}
 				return movie;
 			}
 
 			//Re-set the state by movies data which contains movie 'title' and 'filmedAddresses' of that particular movie
 			this.setState({
-				movies: MovieTitleWithFilmedLocations
+				movies: movieTitleWithFilmedLocations
 			});
 		}
 
