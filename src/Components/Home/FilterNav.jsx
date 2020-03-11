@@ -5,7 +5,6 @@ import { SFMoviesConsumer } from "./../ContextAPI/Context";
 class FilterNav extends Component {
 	handleInputChange = (e) => {
 		e.preventDefault();
-		console.log(e.target.value);
 	};
 	render() {
 		return (

@@ -1,6 +1,35 @@
 #main {
     margin-bottom: 6rem;
 
+    .section-header {}
+
+    .location-map {
+        width: 100%;
+        margin-bottom: 5rem;
+        min-height: 60vh;
+        overflow: hidden;
+        border: 1px solid $color-grey-primary;
+        padding: 2rem;
+
+        .gm-ui-hover-effect {
+            height: 3rem;
+            width: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $color-black-secondary;
+            @include box-shadow-secondary;
+            @include border-radius-lg;
+        }
+
+        .info-window {
+            background-color: $color-blue-primary;
+            color: $color-white-primary;
+            font-size: 1.7rem;
+            padding: 2rem;
+        }
+    }
+
     .movie-filter {
         form {
             width: 100%;
@@ -93,6 +122,8 @@
                         z-index: 20000;
                         position: absolute;
                         border: 1px solid $color-grey-primary;
+                        width: 90vw;
+                        height: 70vh;
 
                         summary {
                             border-bottom: 1px solid $color-blue-primary;

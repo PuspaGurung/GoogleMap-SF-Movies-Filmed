@@ -1,7 +1,7 @@
 import React from "react";
 
 const SFMoviesContext = React.createContext();
-const SFMoviesProvider = SFMoviesContext.Provider;
-const SFMoviesConsumer = SFMoviesContext.Consumer;
+const ContextProvider = SFMoviesContext.Provider;
+const ContextConsumer = SFMoviesContext.Consumer;
 
-export { SFMoviesConsumer, SFMoviesProvider };
+export { ContextConsumer, ContextProvider };
