@@ -10,7 +10,10 @@ const HocSFMovies = (RenderComponent) => {
 		state = {
 			moviesDetails: null,
 			latLngForTriggerMap: null,
-			arrFilmedAddresses: null
+			filmedAddresses: null,
+			googleMapURL:
+				"https://maps.googleapis.com/maps/api/js?key=AIzaSyB3mQfjGA2w84n-DWr9hf1B1xLS_EajGjY",
+			googleMapAPIKey: "AIzaSyB3mQfjGA2w84n-DWr9hf1B1xLS_EajGjY"
 		};
 
 		async componentDidMount() {
@@ -20,7 +23,7 @@ const HocSFMovies = (RenderComponent) => {
 			let arrMoviesTitle = [];
 
 			// Store All Addresses of movie filmed
-			let arrFilmedAddresses = [];
+			let filmedAddresses = [];
 
 			// Get Movies Data
 			let moviesData = await Axios.get(ApiUrl).then((movies) => {
@@ -32,8 +35,8 @@ const HocSFMovies = (RenderComponent) => {
 					if (arrMoviesTitle.includes(movie.title) === false) {
 						arrMoviesTitle.push(movie.title);
 					}
-					if (arrFilmedAddresses.includes(movie.locations) === false) {
-						arrFilmedAddresses.push(movie.locations);
+					if (filmedAddresses.includes(movie.locations) === false) {
+						filmedAddresses.push(movie.locations);
 					}
 
 					return movie;
@@ -44,6 +47,7 @@ const HocSFMovies = (RenderComponent) => {
 				Get  movie Title
 					and
 				Filmed-Address
+				>> moviesDetails contains list of the movies with their title, year of release and filmed location
 			--------------------------------*/
 			let moviesDetails = [];
 			for (let i = 0; i < arrMoviesTitle.length; i++) {
@@ -81,20 +85,27 @@ const HocSFMovies = (RenderComponent) => {
 			//Re-set the state by movies data which contains movie 'title' and 'filmedAddresses' of that particular movie
 			this.setState({
 				moviesDetails,
-				arrFilmedAddresses
+				filmedAddresses
 			});
 		}
 		triggerGoogleMap = (latLng) => {
-			console.log(latLng);
 			this.setState({
 				latLngForTriggerMap: latLng
 			});
 		};
 		render() {
+			let {
+				moviesDetails,
+				filmedAddresses,
+				googleMapAPIKey,
+				googleMapURL
+			} = this.state;
 			return (
 				<RenderComponent
-					moviesData={this.state.moviesDetails}
-					arrFilmedAddresses={this.state.arrFilmedAddresses}
+					moviesData={moviesDetails}
+					filmedAddresses={filmedAddresses}
+					googleMapAPIKey={googleMapAPIKey}
+					googleMapURL={googleMapURL}
 					{...this.props}
 				/>
 			);

@@ -9,7 +9,7 @@ class Header extends Component {
 				<div className="container">
 					<div className="header-wrapper">
 						<Link to="/" className="site-logo">
-							SF FILMS
+							<strong> SF Movies </strong>
 						</Link>
 					</div>
 				</div>

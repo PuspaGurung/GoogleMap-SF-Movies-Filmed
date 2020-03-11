@@ -1,19 +1,14 @@
 #page-header {
     background-color: $color-blue-primary;
-    margin-bottom: 5rem;
-    border-bottom: 2px solid $color-grey-primary;
-
     @include box-shadow-primary;
 
     .header-wrapper {
-        padding: 2rem 0;
+        padding: 2.5rem 0;
         text-align: center;
 
         .site-logo {
-            text-transform: uppercase;
-            font-size: 4rem;
+            font-size: 6rem;
             display: inline-block;
-            text-transform: uppercase;
             color: $color-white-primary;
             font-weight: 800;
         }

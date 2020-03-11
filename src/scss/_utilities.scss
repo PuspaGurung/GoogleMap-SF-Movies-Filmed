@@ -1,6 +1,6 @@
 //container
 .container {
-	width: 95vw;
+	width: 90vw;
 	margin: 0 auto;
 	overflow: hidden;
 }
@@ -21,7 +21,6 @@
 		width: 6rem;
 		height: 3px;
 		background-color: $color-blue-primary;
-		z-index: -1;
 	}
 }
 
@@ -43,6 +42,11 @@
 
 // Section-header
 .section-header {
-	margin-bottom: 3rem;
+	margin: 6rem 0 4rem;
 	width: 100%;
+}
+
+// Section
+.section {
+	overflow: hidden;
 }

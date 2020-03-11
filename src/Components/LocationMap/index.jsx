@@ -23,17 +23,18 @@ class LocationMap extends Component {
 
 	componentDidMount() {
 		let { places } = this.props;
+		console.log(places);
 		places.map(async (place, i) => {
 			if (place !== undefined) {
 				await Geocode.fromAddress(place).then((response) => {
 					const { lat, lng } = response.results[0].geometry.location;
-					let obLatLng = {
+					let objLatLng = {
 						lat,
 						lng
 					};
 					this.setState((prevState) => {
 						return {
-							arrPlacesLatLng: [...prevState.arrPlacesLatLng, obLatLng],
+							arrPlacesLatLng: [...prevState.arrPlacesLatLng, objLatLng],
 							arrPlace: [...prevState.arrPlace, place]
 						};
 					});
@@ -78,7 +79,7 @@ class LocationMap extends Component {
 					);
 				})}
 
-				{isActive == true && (
+				{isActive === true && (
 					<InfoWindow
 						position={{
 							lat: lat,

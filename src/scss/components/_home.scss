@@ -1,164 +1,205 @@
 #main {
-    margin-bottom: 6rem;
 
-    .section-header {}
+    /*-------------------------------
+    SECTION: LOCATION MAP
+---------------------------------*/
+    .section-map {
+        .section-header {}
 
-    .location-map {
-        width: 100%;
-        margin-bottom: 5rem;
-        min-height: 60vh;
-        overflow: hidden;
-        border: 1px solid $color-grey-primary;
-        padding: 2rem;
-
-        .gm-ui-hover-effect {
-            height: 3rem;
-            width: 3rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: $color-black-secondary;
-            @include box-shadow-secondary;
-            @include border-radius-lg;
-        }
-
-        .info-window {
-            background-color: $color-blue-primary;
-            color: $color-white-primary;
-            font-size: 1.7rem;
-            padding: 2rem;
-        }
-    }
-
-    .movie-filter {
-        form {
+        .location-map {
             width: 100%;
-            display: block;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
+            min-height: 60vh;
+            overflow: hidden;
+            border: 1px solid $color-grey-primary;
+            padding: 2rem;
 
-            label {
-                display: block;
-                margin-bottom: 1rem;
-                text-transform: uppercase;
+            .gm-ui-hover-effect {
+                height: 3rem;
+                width: 3rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: $color-black-secondary;
+                @include box-shadow-secondary;
+                @include border-radius-lg;
             }
 
-            input[type="text"] {
-                width: 100%;
-                height: 4rem;
-                padding: 0.8rem 2rem;
-                outline: none;
-                border: 1px solid #ccc;
-
-                @include transition-delay-sm;
-
-                &:focus {
-                    border-bottom: 1px solid $color-blue-primary;
-                }
+            .info-window {
+                background-color: $color-blue-primary;
+                color: $color-white-primary;
+                font-size: 1.7rem;
+                padding: 2rem;
             }
         }
-    }
 
-    .movies-wrapper {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
-
-        .movie {
-            border: 1px solid #eee;
-            padding: 2rem;
-            @include transition-delay-sm;
-            @include box-shadow-secondary;
-            width: 19%;
-            margin-bottom: 3rem;
-
-            &__info-tag {
-                background-color: $color-black-secondary;
-                font-size: 1.3rem;
-                padding: 0.3rem 1rem;
-                color: $color-white-primary;
-            }
-
-            &__title {
-                text-align: left;
-                padding: 1rem;
-                border: 1px solid $color-grey-primary;
-                color: $color-black-secondary;
-            }
-
-            &__filmed-address {
-                min-height: 4rem;
+        .movie-filter {
+            form {
                 width: 100%;
-                position: relative;
+                display: block;
+                margin-bottom: 4rem;
 
-                summary {
-                    position: relative;
-                    z-index: 1;
-                    display: flex;
-                    align-items: center;
+                label {
+                    display: block;
+                    margin-bottom: 1rem;
                     text-transform: uppercase;
+                }
+
+                input[type="text"] {
+                    width: 100%;
+                    height: 4rem;
+                    padding: 0.8rem 2rem;
+                    outline: none;
+                    border: 1px solid #ccc;
+
                     @include transition-delay-sm;
 
-                    &:focus,
-                    &:hover {
-                        outline: none;
-                        color: $color-blue-primary;
+                    &:focus {
+                        border-bottom: 1px solid $color-blue-primary;
                     }
                 }
+            }
+        }
+    }
 
-                details {
-                    z-index: 100;
-                    background-color: $color-white-tertiary;
-                    padding: 2rem;
-                    top: 0;
-                    left: 0;
-                    border-radius: 0;
-                    -webkit-border-radius: 0;
-                    -moz-border-radius: 0;
-                    -ms-border-radius: 0;
-                    -o-border-radius: 0;
+    /*-------------------------------
+    SECTION: MOVIES
+---------------------------------*/
+    .sectio-movies {
+        overflow: hidden;
+        width: 100%;
+        background-color: $color-grey-secondary;
+        padding-bottom: 6rem;
+
+        .movies-wrapper {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+
+            .movie {
+                border: 1px solid #eee;
+                padding: 2rem;
+                @include transition-delay-sm;
+                @include box-shadow-secondary;
+                width: 24%;
+                margin-bottom: 3rem;
+
+                //Screen with <=Laptop screen with
+                @include respond-mediaQuery(laptop) {
+                    width: 32%;
+                }
+
+                //Screen with <=ipad screen with
+                @include respond-mediaQuery(ipad) {
+                    width: 48%;
+                }
+
+                //Screen with <=phone reen with
+                @include respond-mediaQuery(phone) {
+                    width: 100%;
+                }
+
+                &__short-info {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .info-tag {
+                        background-color: $color-blue-primary;
+                        font-size: 1.5rem;
+                        padding: 0.3rem 1rem;
+                        color: $color-white-primary;
+                    }
+
+                    .release-year {}
+                }
+
+                &__title {
+                    text-align: left;
+                    padding: 1rem;
                     border: 1px solid $color-white-tertiary;
+                    color: $color-blue-primary;
+                }
 
-                    &[open] {
-                        z-index: 20000;
-                        position: absolute;
-                        border: 1px solid $color-grey-primary;
-                        width: 90vw;
-                        height: 70vh;
+                &__filmed-address {
+                    min-height: 4rem;
+                    width: 100%;
+                    position: relative;
 
-                        summary {
-                            border-bottom: 1px solid $color-blue-primary;
-                            padding-bottom: 1rem;
-                            margin-bottom: 1rem;
+                    summary {
+                        position: relative;
+                        z-index: 1;
+                        display: flex;
+                        align-items: center;
+                        text-transform: uppercase;
+                        @include transition-delay-sm;
+
+                        &:focus,
+                        &:hover {
+                            outline: none;
                             color: $color-blue-primary;
+                        }
+                    }
+
+                    details {
+                        z-index: 100;
+                        background-color: #f8f9fa;
+                        padding: 2rem;
+                        top: 0;
+                        left: 0;
+                        border-radius: 0;
+                        -webkit-border-radius: 0;
+                        -moz-border-radius: 0;
+                        -ms-border-radius: 0;
+                        -o-border-radius: 0;
+                        border: 1px solid $color-white-tertiary;
+
+                        &[open] {
+                            z-index: 20000;
+                            position: absolute;
+                            border: 1px solid $color-grey-primary;
+                            width: 100%;
+
+
+                            summary {
+                                border-bottom: 1px solid $color-blue-primary;
+                                padding-bottom: 1rem;
+                                margin-bottom: 1rem;
+                                color: $color-blue-primary;
+
+                            }
+                        }
+
+                        &:focus,
+                        &:hover {
+                            outline: none;
+                            cursor: pointer;
+                            border: 1px solid $color-grey-primary;
+                            @include transition-delay-sm;
 
                         }
                     }
 
-                    &:focus,
-                    &:hover {
-                        outline: none;
-                        cursor: pointer;
-                        border: 1px solid $color-grey-primary;
-                        @include transition-delay-sm;
+                    .address-list {
+                        position: relative;
+                        z-index: 2;
+                        padding: 0.8rem;
+                        color: $color-black-secondary;
+                        margin: 0.5rem;
+                        border: 1px solid $color-white-tertiary;
+                        background-color: $color-white-primary;
 
+                        display: inline-flex !important;
+
+                        svg {
+                            margin-right: 0.5rem;
+                            font-size: 1.2rem;
+                            color: $color-red;
+                        }
                     }
-                }
 
-                .address-list {
-                    position: relative;
-                    z-index: 2;
-                    padding: 0.8rem;
-                    color: $color-black-secondary;
-                    margin: 0.5rem;
-                    border: 1px solid $color-grey-secondary;
-                    background-color: $color-white-primary;
-
-                    display: inline-flex !important;
-
-                    svg {
-                        margin-right: 0.5rem;
-                        font-size: 1.2rem;
-                        color: $color-black-primary;
+                    .filmed-location-map {
+                        width: 100%;
+                        margin: 3rem 0;
                     }
                 }
             }

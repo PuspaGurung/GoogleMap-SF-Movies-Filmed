@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-
-import MoviesData from "./../Hoc/MoviesData";
+import LocationMap from "../LocationMap";
 
 import Geocode from "react-geocode";
 Geocode.setApiKey("AIzaSyB3mQfjGA2w84n-DWr9hf1B1xLS_EajGjY");
@@ -34,14 +33,19 @@ class MovieCard extends Component {
 		this.props.triggerGoogleMap(filmedAddressLatLng);
 	};
 	render() {
-		let { movieTitle, filmedAddresses, releaseYear } = this.props;
+		let { movieTitle, filmedAddresses, releaseYear, googleMapURL } = this.props;
 		return (
 			<div className="movie">
-				<span className="movie__info-tag">Movie Title</span>
+				<div className="movie__short-info">
+					<span className="info-tag">Movie Title</span>
+					<span className="release-year">Release year: {releaseYear}</span>
+				</div>
+
 				<h2 className="movie__title heading-secondary">{movieTitle}</h2>
 				<ul className="movie__filmed-address">
 					<details>
 						<summary> Filmed Locations</summary>
+
 						{filmedAddresses.map((address, i) => {
 							return address !== undefined ? (
 								<li key={i} className="address-list">
@@ -54,11 +58,20 @@ class MovieCard extends Component {
 							);
 						})}
 
-						<div className="Lat-lng"></div>
+						<div className="filmed-location-map">
+							<LocationMap
+								googleMapURL={googleMapURL}
+								loadingElement={<div style={{ height: `100%` }} />}
+								containerElement={<div style={{ height: `40rem` }} />}
+								mapElement={<div style={{ height: `100%` }} />}
+								zoom={12}
+								places={filmedAddresses}
+							/>
+						</div>
 					</details>
 				</ul>
 			</div>
 		);
 	}
 }
-export default MoviesData(MovieCard);
+export default MovieCard;
