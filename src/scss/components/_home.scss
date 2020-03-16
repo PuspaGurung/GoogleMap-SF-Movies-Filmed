@@ -46,7 +46,7 @@
             label {
                 display: inline-block;
                 background-color: $color-blue-primary;
-                padding: 1rem;
+                padding: 0 1rem;
                 color: $color-white-primary;
                 text-transform: uppercase;
             }
@@ -54,7 +54,6 @@
             input[type="text"] {
                 width: 100%;
                 padding: 1rem 2rem;
-                line-height: 3rem;
                 font-size: inherit;
                 outline: none;
                 border: 1px solid #ccc;
@@ -89,14 +88,9 @@
                 padding: 2rem;
                 @include transition-delay-sm;
                 @include box-shadow-secondary;
-                width: 24%;
+                width: 32%;
                 margin: 0 0.7rem 1.4rem;
                 overflow: hidden;
-
-                //Screen with <=Laptop screen with
-                @include respond-mediaQuery(laptop) {
-                    width: 32%;
-                }
 
                 //Screen with <=ipad screen with
                 @include respond-mediaQuery(ipad) {
@@ -131,7 +125,7 @@
 
                 .btn-render-location {
                     background-color: #f8f9fa;
-                    padding: 1.5rem 2rem;
+                    padding: 1rem 2rem;
                     border-radius: 0;
                     -webkit-border-radius: 0;
                     -moz-border-radius: 0;
@@ -219,7 +213,7 @@
                 &__filmed-address {
                     position: fixed;
                     z-index: 100;
-                    top: 50%;
+                    top: 10%;
                     width: 45%;
                     left: 50%;
                     visibility: hidden;
@@ -257,7 +251,11 @@
                         width: inherit;
 
                         visibility: visible;
-                        @include transform-xy-minus50percent;
+                        transform: translate(-50%, 5%);
+                        -webkit-transform: translate(-50%, 5%);
+                        -moz-transform: translate(-50%, 5%);
+                        -ms-transform: translate(-50%, 5%);
+                        -o-transform: translate(-50%, 5%);
 
                     }
 

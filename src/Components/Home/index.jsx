@@ -18,8 +18,13 @@ class Home extends Component {
 								<div className="container">
 									<header className="section-header">
 										<h1 className="heading-primary">
-											Movies Filmed Locations in San Francisco
+											Film Locations in San Francisco
 										</h1>
+										<p>
+											{" "}
+											listing of filming locations of movies shot in San
+											Francisco starting from 1924
+										</p>
 									</header>
 									<div className="location-map primary-location-map">
 										<LocationMap
