@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/GoogleMap-SF-Movies-Filmed/static/css/main.c55e5ec6.chunk.css",
+    "main.js": "/GoogleMap-SF-Movies-Filmed/static/js/main.09b559b4.chunk.js",
+    "main.js.map": "/GoogleMap-SF-Movies-Filmed/static/js/main.09b559b4.chunk.js.map",
+    "runtime-main.js": "/GoogleMap-SF-Movies-Filmed/static/js/runtime-main.347ff5ab.js",
+    "runtime-main.js.map": "/GoogleMap-SF-Movies-Filmed/static/js/runtime-main.347ff5ab.js.map",
+    "static/js/2.21c0e278.chunk.js": "/GoogleMap-SF-Movies-Filmed/static/js/2.21c0e278.chunk.js",
+    "static/js/2.21c0e278.chunk.js.map": "/GoogleMap-SF-Movies-Filmed/static/js/2.21c0e278.chunk.js.map",
+    "index.html": "/GoogleMap-SF-Movies-Filmed/index.html",
+    "precache-manifest.dc8b68b9aef360a4bee7734e4f316f94.js": "/GoogleMap-SF-Movies-Filmed/precache-manifest.dc8b68b9aef360a4bee7734e4f316f94.js",
+    "service-worker.js": "/GoogleMap-SF-Movies-Filmed/service-worker.js",
+    "static/css/main.c55e5ec6.chunk.css.map": "/GoogleMap-SF-Movies-Filmed/static/css/main.c55e5ec6.chunk.css.map",
+    "static/js/2.21c0e278.chunk.js.LICENSE.txt": "/GoogleMap-SF-Movies-Filmed/static/js/2.21c0e278.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.347ff5ab.js",
+    "static/js/2.21c0e278.chunk.js",
+    "static/css/main.c55e5ec6.chunk.css",
+    "static/js/main.09b559b4.chunk.js"
+  ]
+}
