@@ -91,6 +91,7 @@
                 @include box-shadow-secondary;
                 width: 24%;
                 margin: 0 0.7rem 1.4rem;
+                overflow: hidden;
 
                 //Screen with <=Laptop screen with
                 @include respond-mediaQuery(laptop) {
@@ -128,12 +129,9 @@
                     color: $color-blue-primary;
                 }
 
-                .btn-show-location {
-                    z-index: 100;
+                .btn-render-location {
                     background-color: #f8f9fa;
                     padding: 1.5rem 2rem;
-                    top: 0;
-                    left: 0;
                     border-radius: 0;
                     -webkit-border-radius: 0;
                     -moz-border-radius: 0;
@@ -152,25 +150,20 @@
 
                 }
 
-                &__filmed-address {
-                    position: fixed;
-                    z-index: 2000;
-                    top: 50%;
-                    left: 50%;
-                    width: 45%;
-                    @include transform-xy-minus50percent;
-                    @include transition-delay-sm;
+                .show-address-list {
+                    animation: showAddressList 0.4s ease-out forwards;
+                    -webkit-animation: showAddressList 0.4s ease-out forwards;
+                    background-color: $color-white-primary;
 
                     &::before {
                         content: "";
                         position: absolute;
-                        width: 2000%;
+                        width: 4000%;
                         height: 2000%;
                         background-color: rgba($color-black-primary, 0.9);
-                        z-index: 1;
-                        left: -200%;
+                        z-index: -1;
+                        left: -400%;
                         top: -200%;
-                        @include transition-delay-sm
                     }
 
                     .address-list-wrapper {
@@ -178,52 +171,127 @@
                         z-index: 500;
                         padding: 5rem;
                         background-color: $color-white-primary;
-                        @include box-shadow-secondary;
-                        @include transition-delay-sm;
 
                         .movie__title {
                             border: none;
                         }
 
                         .btn-close-location {
-                            width: 4rem;
-                            height: 4rem;
+                            width: 5rem;
+                            height: 5rem;
                             display: flex;
+                            font-size: 2rem;
                             align-content: center;
                             justify-content: center;
                             @include border-radius-lg;
                             border: 1px solid $color-white-tertiary;
-                            @include transition-delay-sm;
-                            position: absolute;
-                            top: 1.5rem;
-                            right: 1.5rem;
                             cursor: pointer;
                             background-color: $color-white-primary;
                             color: red;
                             @include box-shadow-secondary;
+                            margin-bottom: 2rem;
+                        }
+
+                        .address-list {
+                            position: relative;
+                            z-index: 2;
+                            padding: 0.8rem;
+                            color: $color-white-primary;
+                            margin: 0.5rem;
+                            background-color: $color-blue-primary;
+                            display: inline-flex !important;
+
+                            svg {
+                                margin-right: 0.5rem;
+                                font-size: 1.2rem;
+                                color: $color-red;
+                            }
                         }
                     }
+                }
 
-                    .address-list {
-                        position: relative;
-                        z-index: 2;
-                        padding: 0.8rem;
-                        color: $color-white-primary;
-                        margin: 0.5rem;
-                        background-color: $color-blue-primary;
-                        display: inline-flex !important;
+                .hide-address-list {
 
-                        svg {
-                            margin-right: 0.5rem;
-                            font-size: 1.2rem;
-                            color: $color-red;
-                        }
+                    animation: hideAddressList 0.4s ease-out forwards;
+                    -webkit-animation: hideAddressList 0.4s ease-out forwards;
+                }
+
+                &__filmed-address {
+                    position: fixed;
+                    z-index: 100;
+                    top: 50%;
+                    width: 45%;
+                    left: 50%;
+                    visibility: hidden;
+                    height: 0rem;
+                    width: 0rem;
+                }
+
+                /*-----------------------------------------------------
+                     ANIMATION
+                -------------------------------------------------------*/
+                @keyframes showAddressList {
+                    0% {
+
+                        visibility: hidden;
+                        transform: translate(-50%, -100%);
+                        -webkit-transform: translate(-50%, -100%);
+                        -moz-transform: translate(-50%, -100%);
+                        -ms-transform: translate(-50%, -100%);
+                        -o-transform: translate(-50%, -100%);
                     }
 
-                    .filmed-location-map {
-                        width: 100%;
-                        margin: 3rem 0;
+                    50% {
+                        height: inherit;
+                        width: inherit;
+                        visibility: visible;
+                        transform: translate(-50%, 20%);
+                        -webkit-transform: translate(-50%, 20%);
+                        -moz-transform: translate(-50%, 20%);
+                        -ms-transform: translate(-50%, 20%);
+                        -o-transform: translate(-50%, 20%);
                     }
+
+                    100% {
+                        height: inherit;
+                        width: inherit;
+
+                        visibility: visible;
+                        @include transform-xy-minus50percent;
+
+                    }
+
+                }
+
+                @keyframes hideAddressList {
+                    0% {
+                        visibility: visible;
+                        @include transform-xy-minus50percent;
+                    }
+
+                    50% {
+                        visibility: visible;
+                        opacity: 0.9;
+                        transform: translateY(20%);
+                        -webkit-transform: translateY(20%);
+                        -moz-transform: translateY(20%);
+                        -ms-transform: translateY(20%);
+                        -o-transform: translateY(20%);
+                        height: auto;
+                        width: auto;
+                    }
+
+                    100% {
+                        visibility: hidden;
+                        transform: translateY(-100%);
+                        -webkit-transform: translateY(-100%);
+                        -moz-transform: translateY(-100%);
+                        -ms-transform: translateY(-100%);
+                        -o-transform: translateY(-100%);
+                        height: auto;
+                        width: auto;
+                    }
+
                 }
             }
         }

@@ -42,16 +42,17 @@ class MoviesCards extends Component {
 													myIndex: index
 												})
 											}
-											className="btn btn-show-location"
+											className="btn btn-render-location"
 										>
 											<i class="fas fa-plus-circle"></i> Filmed Location
 										</button>
 
 										<ul
-											className="address-wrapper movie__filmed-address"
-											style={{
-												visibility: `${myIndex == index ? "visible" : "hidden"}`
-											}}
+											className={`movie__filmed-address ${
+												myIndex == index
+													? "show-address-list"
+													: "hide-address-list"
+											}`}
 										>
 											<div className="address-list-wrapper">
 												<button
@@ -64,25 +65,31 @@ class MoviesCards extends Component {
 												>
 													X
 												</button>
-												<h2 className="movie__title heading-secondary">
-													{movie.title}
-												</h2>
-												<h3 className="heading-tertiary">
-													<strong> Filmed Locations</strong>
-												</h3>
 
-												{movie.filmedAddresses.map((address, i) => {
-													return address !== undefined ? (
-														<li key={i} className="address-list">
-															{/*<i className="fa fa-map-marker-alt"></i>*/}
-															{address}
-														</li>
-													) : (
-														<li key={i} className="address-list">
-															Address Not specified
-														</li>
-													);
-												})}
+												<div>
+													<h2 className="movie__title heading-secondary">
+														{movie.title}
+													</h2>
+													<h3 className="heading-tertiary">
+														<span>Release year:</span> {movie.releaseYear}
+													</h3>
+													<h3 className="heading-tertiary">
+														<strong> Filmed Locations</strong>
+													</h3>
+
+													{movie.filmedAddresses.map((address, i) => {
+														return address !== undefined ? (
+															<li key={i} className="address-list">
+																{/*<i className="fa fa-map-marker-alt"></i>*/}
+																{address}
+															</li>
+														) : (
+															<li key={i} className="address-list">
+																Address Not specified
+															</li>
+														);
+													})}
+												</div>
 											</div>
 										</ul>
 									</div>
