@@ -8,14 +8,23 @@ Geocode.setApiKey("AIzaSyB3mQfjGA2w84n-DWr9hf1B1xLS_EajGjY");
 Geocode.enableDebug();
 
 class MoviesCards extends Component {
+	state = {
+		myIndex: null
+	};
+
+	handleBtnShowLocation = () => {
+		this.setState({
+			showLocation: true
+		});
+	};
 	render() {
+		let { myIndex } = this.state;
 		return (
 			<ContextConsumer>
 				{({ movies }) => {
 					let { movieInfoObjLists } = movies;
-					console.log(movieInfoObjLists.length);
 					return movieInfoObjLists.length > 1
-						? movieInfoObjLists.map((movie) => {
+						? movieInfoObjLists.map((movie, index) => {
 								return (
 									<div className="movie">
 										<div className="movie__short-info">
@@ -24,13 +33,43 @@ class MoviesCards extends Component {
 												Release year: {movie.releaseYear}
 											</span>
 										</div>
-
 										<h2 className="movie__title heading-secondary">
 											{movie.title}
 										</h2>
-										<ul className="movie__filmed-address">
-											<details>
-												<summary> Filmed Locations</summary>
+										<button
+											onClick={() =>
+												this.setState({
+													myIndex: index
+												})
+											}
+											className="btn btn-show-location"
+										>
+											<i class="fas fa-plus-circle"></i> Filmed Location
+										</button>
+
+										<ul
+											className="address-wrapper movie__filmed-address"
+											style={{
+												visibility: `${myIndex == index ? "visible" : "hidden"}`
+											}}
+										>
+											<div className="address-list-wrapper">
+												<button
+													className=" btn btn-close-location"
+													onClick={() =>
+														this.setState({
+															myIndex: null
+														})
+													}
+												>
+													X
+												</button>
+												<h2 className="movie__title heading-secondary">
+													{movie.title}
+												</h2>
+												<h3 className="heading-tertiary">
+													<strong> Filmed Locations</strong>
+												</h3>
 
 												{movie.filmedAddresses.map((address, i) => {
 													return address !== undefined ? (
@@ -44,18 +83,7 @@ class MoviesCards extends Component {
 														</li>
 													);
 												})}
-
-												<div className="filmed-location-map">
-													{/*<LocationMap
-								googleMapURL={googleMapURL}
-								loadingElement={<div style={{ height: `100%` }} />}
-								containerElement={<div style={{ height: `40rem` }} />}
-								mapElement={<div style={{ height: `100%` }} />}
-								zoom={12}
-								places={filmedAddresses}
-							/>*/}
-												</div>
-											</details>
+											</div>
 										</ul>
 									</div>
 								);

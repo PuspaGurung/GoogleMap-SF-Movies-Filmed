@@ -19,13 +19,14 @@ class LocationMap extends Component {
 			isActive: false,
 			lat: "",
 			lng: "",
-			place: ""
+			place: "",
+			title: ""
 		}
 	};
 
 	componentDidMount() {
-		let { places } = this.props;
-		places.map(async (place, i) => {
+		let { filmedAddresses } = this.props;
+		filmedAddresses.map(async (place, i) => {
 			if (place !== undefined) {
 				await Geocode.fromAddress(place).then((response) => {
 					const { lat, lng } = response.results[0].geometry.location;
@@ -49,19 +50,29 @@ class LocationMap extends Component {
 		});
 	}
 	handleClick = (latLng, place) => {
-		this.setState({
-			infoWindow: {
-				isActive: true,
-				lat: latLng.lat,
-				lng: latLng.lng,
-				place: place
+		// Get address from latidude & longitude.
+		Geocode.fromLatLng(latLng.lat, latLng.lng).then(
+			(response) => {
+				const place = response.results[0].formatted_address;
+				console.log(place);
+				this.setState({
+					infoWindow: {
+						isActive: true,
+						lat: latLng.lat,
+						lng: latLng.lng,
+						place
+					}
+				});
+			},
+			(error) => {
+				console.error(error);
 			}
-		});
+		);
 	};
 	render() {
 		let { arrPlacesLatLng, arrPlace } = this.state;
-		let { isActive, lat, lng, place } = this.state.infoWindow;
-		let { placeLatLng } = this.props;
+		let { isActive, lat, lng, place, title } = this.state.infoWindow;
+		let { filmedAddresses, moviesTitles } = this.props;
 
 		return (
 			<GoogleMap
@@ -75,7 +86,7 @@ class LocationMap extends Component {
 							position={{ lat: latLng.lat, lng: latLng.lng }}
 							draggable={true}
 							onClick={() => {
-								this.handleClick(latLng, arrPlace[i]);
+								this.handleClick(latLng, filmedAddresses[i], moviesTitles[i]);
 							}}
 						/>
 					);
@@ -93,12 +104,15 @@ class LocationMap extends Component {
 									isActive: false,
 									lat: "",
 									lng: "",
-									place: ""
+									place: "",
+									title: ""
 								}
 							});
 						}}
 					>
-						<div className="info-window">{place}</div>
+						<div className="info-window">
+							<strong>{place}</strong>
+						</div>
 					</InfoWindow>
 				)}
 			</GoogleMap>

@@ -6,12 +6,11 @@ import MoviesCards from "../MoviesCards";
 
 class Home extends Component {
 	render() {
-		let { moviesFilmedAddresses, googleMapURL, moviesDetails } = this.props;
-
 		return (
 			<ContextConsumer>
 				{(value) => {
-					let placeLatLng = value.movies.moviesFilmedAddressesLatLng,
+					let filmedAddresses = value.movies.moviesFilmedAddresses,
+						moviesTitles = value.movies.moviesTitles,
 						googleMapURL = value.googleMapURL;
 					return (
 						<main id="main">
@@ -23,14 +22,15 @@ class Home extends Component {
 										</h1>
 									</header>
 									<div className="location-map primary-location-map">
-										{/*<LocationMap
+										<LocationMap
 											googleMapURL={googleMapURL}
 											loadingElement={<div style={{ height: `100%` }} />}
 											containerElement={<div style={{ height: `60rem` }} />}
 											mapElement={<div style={{ height: `100%` }} />}
 											zoom={12}
-											places={placeLatLng}
-										/>*/}
+											filmedAddresses={filmedAddresses}
+											moviesTitles={moviesTitles}
+										/>
 									</div>
 								</div>
 							</section>

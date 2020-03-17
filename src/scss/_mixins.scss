@@ -2,11 +2,11 @@
  TRANSITION DELAY 
 ------------------------------*/
 @mixin transition-delay-sm {
-  transition: all 0.5s;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -ms-transition: all 0.5s;
-  -o-transition: all 0.5s;
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
 }
 
 /*-------------------------------------
@@ -26,6 +26,17 @@
 @mixin box-shadow-tertiary {
   box-shadow: 0 0.1rem 0.5rem $color-black-tertiary;
   -webkit-box-shadow: 0 0.1rem 0.5rem $color-black-tertiary;
+}
+
+/*-----------------------------
+  TRANSFORM
+------------------------------*/
+@mixin transform-xy-minus50percent {
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
 }
 
 /*-----------------------------

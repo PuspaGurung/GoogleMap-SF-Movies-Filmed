@@ -128,62 +128,79 @@
                     color: $color-blue-primary;
                 }
 
-                &__filmed-address {
-                    min-height: 4rem;
+                .btn-show-location {
+                    z-index: 100;
+                    background-color: #f8f9fa;
+                    padding: 1.5rem 2rem;
+                    top: 0;
+                    left: 0;
+                    border-radius: 0;
+                    -webkit-border-radius: 0;
+                    -moz-border-radius: 0;
+                    -ms-border-radius: 0;
+                    -o-border-radius: 0;
+                    border: 1px solid $color-white-tertiary;
+                    font-family: inherit;
+                    text-align: left;
                     width: 100%;
-                    position: relative;
+                    text-transform: uppercase;
+                    font-size: 1.6rem;
 
-                    summary {
-                        position: relative;
-                        z-index: 1;
-                        display: flex;
-                        align-items: center;
-                        text-transform: uppercase;
-                        @include transition-delay-sm;
-
-                        &:focus,
-                        &:hover {
-                            outline: none;
-                            color: $color-blue-primary;
-                        }
+                    svg {
+                        margin-right: 1rem;
                     }
 
-                    details {
-                        z-index: 100;
-                        background-color: #f8f9fa;
-                        padding: 2rem;
-                        top: 0;
-                        left: 0;
-                        border-radius: 0;
-                        -webkit-border-radius: 0;
-                        -moz-border-radius: 0;
-                        -ms-border-radius: 0;
-                        -o-border-radius: 0;
-                        border: 1px solid $color-white-tertiary;
+                }
 
-                        &[open] {
-                            z-index: 20000;
-                            position: absolute;
-                            border: 1px solid $color-grey-primary;
-                            width: 100%;
+                &__filmed-address {
+                    position: fixed;
+                    z-index: 2000;
+                    top: 50%;
+                    left: 50%;
+                    width: 45%;
+                    @include transform-xy-minus50percent;
+                    @include transition-delay-sm;
 
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        width: 2000%;
+                        height: 2000%;
+                        background-color: rgba($color-black-primary, 0.9);
+                        z-index: 1;
+                        left: -200%;
+                        top: -200%;
+                        @include transition-delay-sm
+                    }
 
-                            summary {
-                                border-bottom: 1px solid $color-blue-primary;
-                                padding-bottom: 1rem;
-                                margin-bottom: 1rem;
-                                color: $color-blue-primary;
+                    .address-list-wrapper {
+                        position: relative;
+                        z-index: 500;
+                        padding: 5rem;
+                        background-color: $color-white-primary;
+                        @include box-shadow-secondary;
+                        @include transition-delay-sm;
 
-                            }
+                        .movie__title {
+                            border: none;
                         }
 
-                        &:focus,
-                        &:hover {
-                            outline: none;
-                            cursor: pointer;
-                            border: 1px solid $color-grey-primary;
+                        .btn-close-location {
+                            width: 4rem;
+                            height: 4rem;
+                            display: flex;
+                            align-content: center;
+                            justify-content: center;
+                            @include border-radius-lg;
+                            border: 1px solid $color-white-tertiary;
                             @include transition-delay-sm;
-
+                            position: absolute;
+                            top: 1.5rem;
+                            right: 1.5rem;
+                            cursor: pointer;
+                            background-color: $color-white-primary;
+                            color: red;
+                            @include box-shadow-secondary;
                         }
                     }
 
@@ -191,11 +208,9 @@
                         position: relative;
                         z-index: 2;
                         padding: 0.8rem;
-                        color: $color-black-secondary;
+                        color: $color-white-primary;
                         margin: 0.5rem;
-                        border: 1px solid $color-white-tertiary;
-                        background-color: $color-white-primary;
-
+                        background-color: $color-blue-primary;
                         display: inline-flex !important;
 
                         svg {
