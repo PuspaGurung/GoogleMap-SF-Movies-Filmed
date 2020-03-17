@@ -1,10 +1,13 @@
 html {
-  // size is measure in the basis of REMs, (thats makes easy for responsive design)
-  // default font size 16px = 100% (i.e 1rem = 16px)
-  // here I set default font size to 62.5%, (i.e 1rem = 10px),
-  // this makes easier to calculate rem in the basis of 10px = 1rem,
-  // e.g 13px = (13/10)rem = 1.3rem  ( >> this is super easy then calcualte 13px = 13/16 = 0.8125rem )
+  /*-----------------------------------------------------------------------------------------------
 
+   Element-size or Font-size  is measure in the basis of REMs, (thats makes easy for responsive design)
+   >> Default font size 16px = 100% (i.e 1rem = 16px)
+   >> In this project default font size set to 62.5%, (i.e 1rem = 10px),
+      it makes easier to calculate rem in the basis of 10px = 1rem,
+      e.g 1px = (1/10)rem = 0.1rem  ( >> this is super easier to calculate 1px=0.1rem then 1px=0.0625rem by default
+
+  -----------------------------------------------------------------------------------------------------*/
   font-size: 62.5%; // 1rem = 10px; (100/16)*10 = 62.5%;
   box-sizing: border-box;
 

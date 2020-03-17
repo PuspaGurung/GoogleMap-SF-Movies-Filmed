@@ -1,15 +1,15 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import Layout from "../ContextAPI/layout";
+import ContextProvider from "../ContextAPI/ContextProvider";
 import Home from "../Home";
 const Routes = (props) => {
 	return (
-		<Layout>
+		<ContextProvider>
 			<Switch>
 				<Route {...props} component={Home} exact path="/" />
 			</Switch>{" "}
-		</Layout>
+		</ContextProvider>
 	);
 };
 export default Routes;

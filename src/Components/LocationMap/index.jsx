@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+
+import { ContextConsumer } from "./../ContextAPI/Context";
 import {
 	withGoogleMap,
 	GoogleMap,
@@ -23,7 +25,6 @@ class LocationMap extends Component {
 
 	componentDidMount() {
 		let { places } = this.props;
-		console.log(places);
 		places.map(async (place, i) => {
 			if (place !== undefined) {
 				await Geocode.fromAddress(place).then((response) => {
@@ -60,6 +61,7 @@ class LocationMap extends Component {
 	render() {
 		let { arrPlacesLatLng, arrPlace } = this.state;
 		let { isActive, lat, lng, place } = this.state.infoWindow;
+		let { placeLatLng } = this.props;
 
 		return (
 			<GoogleMap

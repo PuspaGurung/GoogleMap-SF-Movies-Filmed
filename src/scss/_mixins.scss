@@ -1,11 +1,3 @@
-/*-----------------------------
-  BOX SHADOW
-------------------------------*/
-@mixin box-shadow-sm {
-  box-shadow: 0 0.1rem 0.5rem $color-black-tertiary;
-  -webkit-box-shadow: 0 0.1rem 0.5rem $color-black-tertiary;
-}
-
 /*---------------------------
  TRANSITION DELAY 
 ------------------------------*/
@@ -29,6 +21,11 @@
   box-shadow: 0 0 20px 4px rgba(0, 0, 0, .05);
   -webkit-box-shadow: 0 0 20px 4px rgba(0, 0, 0, .05);
   -moz-box-shadow: 0 0 20px 4px rgba(0, 0, 0, .05);
+}
+
+@mixin box-shadow-tertiary {
+  box-shadow: 0 0.1rem 0.5rem $color-black-tertiary;
+  -webkit-box-shadow: 0 0.1rem 0.5rem $color-black-tertiary;
 }
 
 /*-----------------------------
